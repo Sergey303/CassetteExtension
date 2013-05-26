@@ -451,19 +451,20 @@ namespace factograph
         }
         private static void MakeAudioPreview(this Cassette cassette, XElement iisstore)
         {
-            string ur = iisstore.Attribute(ONames.AttUri).Value;
-            string docPath = ur.Substring(ur.Length - 9, 9);
-            StreamWriter sw = File.AppendText(cassette.Dir.FullName + "/convertVideo.bat");
-            string executeLine =
-                "-i \"" + cassette.Dir.FullName + "/originals/" + docPath + Cassette.GetOriginalExtensionFromIisstore(iisstore) +
-                "\" -y -ar " + cassette.GetPreviewParameter(iisstore, "medium", "audioBitrate");
+            //          ================= Надо разобраться! =================
+            //string ur = iisstore.Attribute(ONames.AttUri).Value;
+            //string docPath = ur.Substring(ur.Length - 9, 9);
+            //StreamWriter sw = File.AppendText(cassette.Dir.FullName + "/convertVideo.bat");
+            //string executeLine =
+            //    "-i \"" + cassette.Dir.FullName + "/originals/" + docPath + Cassette.GetOriginalExtensionFromIisstore(iisstore) +
+            //    "\" -y -ar " + cassette.GetPreviewParameter(iisstore, "medium", "audioBitrate");
 
-            // Преобразование в mp3
-            string file_pars_mp3 = "\"" + cassette.Dir.FullName + "/documents/medium/" + docPath + ".mp3\"";
-            sw.WriteLine(App_Bin_Path + "ffmpeg.exe " + executeLine + file_pars_mp3);
+            //// Преобразование в mp3
+            //string file_pars_mp3 = "\"" + cassette.Dir.FullName + "/documents/medium/" + docPath + ".mp3\"";
+            //sw.WriteLine(App_Bin_Path + "ffmpeg.exe " + executeLine + file_pars_mp3);
 
-            sw.Close();
-            cassette.NeedToCalculate = true;
+            //sw.Close();
+            //cassette.NeedToCalculate = true;
         }
         public static IEnumerable<XElement> AddNewRdf(this Cassette cassette, string owner)
         {
